@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icono-192.png"><meta name="theme-color" content="#0b7a4b">
 <!--contenido-->
 <title>La Pizarra</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -21,6 +22,7 @@
   --fondo-base: #0d161d; --mezcla: 16%; --superficie: #17252f; --linea: #2f424f; --tinta: #e9f0f3; --suave: #a3b5bf;
   --acento: color-mix(in srgb, var(--liga) 50%, #ffffff); --vivo: #ff6b63; --aviso-fondo: #3a2e10; --aviso-tinta: #f6dc9c; color-scheme: dark }
 * { box-sizing: border-box }
+[hidden] { display: none !important }
 body { margin: 0; background: var(--fondo-base); background: color-mix(in srgb, var(--liga) var(--mezcla), var(--fondo-base)); color: var(--tinta); font: 400 16px/1.45 var(--cuerpo); transition: background-color .2s }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--liga) }
 .envoltura { max-width: 1080px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)) }
@@ -759,6 +761,8 @@ if (INSTANTANEA) {
   $('aviso').textContent = `Copia para ver desde cualquier lado. Son datos reales de ESPN, pero no se actualizan solos (guardados el ${cuando}). Para ver marcadores al momento, abre La Pizarra en tu computadora.`;
   $('aviso').hidden = false;
   $('recargar').hidden = true;
+} else if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+  navigator.serviceWorker.register('sw.js').catch(() => { /* la app funciona igual sin instalarse */ });
 }
 cargar();
 </script>

@@ -1,0 +1,19 @@
+{
+  "name": "La Pizarra",
+  "short_name": "La Pizarra",
+  "description": "Próximos partidos, estadísticas y tablas de fútbol, NBA, NFL y MLB.",
+  "lang": "es",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b7a4b",
+  "theme_color": "#0b7a4b",
+  "categories": ["sports"],
+  "icons": [
+    { "src": "icono-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icono-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icono-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
